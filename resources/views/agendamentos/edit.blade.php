@@ -9,14 +9,13 @@
         @method('PUT')
 
         <div class="mb-3">
-            <label for="servico_id" class="form-label">Serviço</label>
-            <select name="servico_id" class="form-control" required>
-                @foreach($servicos as $servico)
-                    <option value="{{ $servico->id }}" {{ $agendamento->servico_id == $servico->id ? 'selected' : '' }}>
-                        {{ $servico->nome }}
-                    </option>
-                @endforeach
-            </select>
+            <label for="cliente" class="form-label">Cliente</label>
+            <input type="text" name="cliente" value="{{ $agendamento->cliente }}" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="servico" class="form-label">Serviço</label>
+            <input type="text" name="servico" value="{{ $agendamento->servico }}" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -31,7 +30,7 @@
 
         <div class="mb-3">
             <label for="status" class="form-label">Status</label>
-            <select name="status" class="form-control">
+            <select name="status" class="form-control" required>
                 <option value="pendente" {{ $agendamento->status == 'pendente' ? 'selected' : '' }}>Pendente</option>
                 <option value="concluido" {{ $agendamento->status == 'concluido' ? 'selected' : '' }}>Concluído</option>
                 <option value="cancelado" {{ $agendamento->status == 'cancelado' ? 'selected' : '' }}>Cancelado</option>

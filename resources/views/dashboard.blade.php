@@ -13,7 +13,7 @@
     @section('content')
         <div class="card p-4 shadow-sm">
             <h2>Bem-vindo, {{ Auth::user()->name }}!</h2>
-            <p>Aqui será o painel administrativo do Lavacar 🚗</p>
+            <p>Aqui será o painel administrativo do Lavacar</p>
         </div>
     @endsection
 

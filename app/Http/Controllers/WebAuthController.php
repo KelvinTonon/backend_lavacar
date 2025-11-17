@@ -22,7 +22,7 @@ class WebAuthController extends Controller
 
     public function register(Request $request)
     {
-        //Faz a validação de todo o formulário
+    
         $request ->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -43,7 +43,7 @@ class WebAuthController extends Controller
 
     public function login(Request $request)
     {
-        //validação dos campo para o login
+       
         $credentials = $request->validate([
             'email'=> 'required|email',
             'password'=> 'required',

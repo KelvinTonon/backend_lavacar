@@ -1,21 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>Cadastrar Empresa</h1>
+<div class="container mt-5">
+    <h2>Nova Empresa</h2>
 
     <form action="{{ route('empresas.store') }}" method="POST">
         @csrf
-        <label>Nome:</label>
-        <input type="text" name="nome" required><br>
 
-        <label>Endereço:</label>
-        <input type="text" name="endereco" required><br>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" required>
+        </div>
 
-        <label>Telefone:</label>
-        <input type="text" name="telefone" required><br>
+        <div class="mb-3">
+            <label for="endereco" class="form-label">Endereço</label>
+            <input type="text" name="endereco" id="endereco" class="form-control" required>
+        </div>
 
-        <button type="submit">Salvar</button>
+        <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" name="telefone" id="telefone" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="CNPJ" class="form-label">CNPJ</label>
+            <input type="text" name="CNPJ" id="CNPJ" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ route('empresas.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 @endsection

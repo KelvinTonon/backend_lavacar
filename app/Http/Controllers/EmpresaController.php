@@ -21,6 +21,7 @@ class EmpresaController extends Controller
             'nome' => 'required|string|max:255',
             'endereco' => 'required|string|max:255',
             'telefone' => 'required|string|max:20',
+            'CNPJ' => 'required|string|max:20',
         ]);
 
         Empresa::create($request->all());

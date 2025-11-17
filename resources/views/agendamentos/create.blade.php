@@ -4,17 +4,21 @@
 <div class="container mt-5">
     <h2>Novo Agendamento</h2>
 
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+
     <form action="{{ route('agendamentos.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
-            <label for="servico_id" class="form-label">Serviço</label>
-            <select name="servico_id" class="form-control" required>
-                <option value="">Selecione...</option>
-                @foreach($servicos as $servico)
-                    <option value="{{ $servico->id }}">{{ $servico->nome }}</option>
-                @endforeach
-            </select>
+            <label for="cliente" class="form-label">Cliente</label>
+            <input type="text" name="cliente" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="servico" class="form-label">Serviço</label>
+            <input type="text" name="servico" class="form-control" required>
         </div>
 
         <div class="mb-3">
@@ -32,3 +36,4 @@
     </form>
 </div>
 @endsection
+

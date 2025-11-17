@@ -3,11 +3,12 @@
 @section('content')
 <div class="container mt-5">
     <h2>Agendamentos</h2>
-    <a href="{{ route('agendamentos.create') }}" class="btn btn-primary mb-3">Novo Agendamento</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
+
+    <a href="{{ route('agendamentos.create') }}" class="btn btn-primary mb-3">Novo Agendamento</a>
 
     <table class="table table-bordered">
         <thead>
@@ -21,23 +22,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($agendamentos as $ag)
-            <tr>
-                <td>{{ $ag->user->name }}</td>
-                <td>{{ $ag->servico->nome }}</td>
-                <td>{{ \Carbon\Carbon::parse($ag->data)->format('d/m/Y') }}</td>
-                <td>{{ $ag->hora }}</td>
-                <td>{{ ucfirst($ag->status) }}</td>
-                <td>
-                    <a href="{{ route('agendamentos.edit', $ag->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                    <form action="{{ route('agendamentos.destroy', $ag->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Excluir este agendamento?')">Excluir</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+            @forelse($agendamentos as $agendamento)
+                <tr>
+                    <td>{{ $agendamento->cliente }}</td>
+                    <td>{{ $agendamento->servico }}</td>
+                    <td>{{ \Carbon\Carbon::parse($agendamento->data)->format('d/m/Y') }}</td>
+                    <td>{{ $agendamento->hora }}</td>
+                    <td>{{ ucfirst($agendamento->status) }}</td>
+                    <td>
+                        <a href="{{ route('agendamentos.edit', $agendamento->id) }}" class="btn btn-sm btn-warning">Editar</a>
+
+                        <form action="{{ route('agendamentos.destroy', $agendamento->id) }}" method="POST" style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir?')">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6" class="text-center">Nenhum agendamento encontrado.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>

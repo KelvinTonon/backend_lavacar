@@ -15,7 +15,7 @@
                     <div class="card-body p-4">
                         <h3 class="text-center mb-4 fw-bold">Lavacar</h3>
 
-                        {{-- Exibe mensagens de erro --}}
+                       
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul class="mb-0">
@@ -26,7 +26,7 @@
                             </div>
                         @endif
 
-                        {{-- Exibe mensagem de sucesso (logout, registro etc) --}}
+                        
                         @if (session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>
                         @endif

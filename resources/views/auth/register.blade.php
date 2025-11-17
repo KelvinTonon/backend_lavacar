@@ -15,7 +15,7 @@
                     <div class="card-body p-4">
                         <h3 class="text-center mb-4 fw-bold">Criar conta</h3>
 
-                        {{-- Exibe erros --}}
+                        
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul class="mb-0">

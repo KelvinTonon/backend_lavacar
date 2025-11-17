@@ -7,20 +7,20 @@ use App\Models\Servico;
 
 class ServicoController extends Controller
 {
-    // Listar todos os serviços
+    
     public function index()
     {
         $servicos = Servico::all();
         return view('servicos.index', compact('servicos'));
     }
 
-    // Mostrar formulário de criação
+
     public function create()
     {
         return view('servicos.create');
     }
 
-    // Salvar novo serviço no banco
+   
     public function store(Request $request)
     {
         $request->validate([
@@ -35,14 +35,14 @@ class ServicoController extends Controller
                          ->with('success', 'Serviço cadastrado com sucesso!');
     }
 
-    // Mostrar formulário de edição
+    
     public function edit($id)
     {
         $servico = Servico::findOrFail($id);
         return view('servicos.edit', compact('servico'));
     }
 
-    // Atualizar serviço
+    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -58,7 +58,7 @@ class ServicoController extends Controller
                          ->with('success', 'Serviço atualizado com sucesso!');
     }
 
-    // Excluir serviço
+   
     public function destroy($id)
     {
         $servico = Servico::findOrFail($id);

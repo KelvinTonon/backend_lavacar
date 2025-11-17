@@ -10,7 +10,6 @@ class servico extends Model
 {
     use HasFactory;
 
-    // Define quais campos podem ser preenchidos em massa
     protected $fillable = [
         'nome_servico',
         'descricao',
