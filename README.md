@@ -14,4 +14,4 @@ Mysql
 Postman
 Laravel Sanctum
 Vs code
-Chat Gpt
+
